@@ -1,7 +1,6 @@
-package com.alvingao.wordcounter.tokenizer;
+package com.alvingao.wordcounter.analyzers;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 import java.util.regex.MatchResult;
 import java.util.regex.Pattern;

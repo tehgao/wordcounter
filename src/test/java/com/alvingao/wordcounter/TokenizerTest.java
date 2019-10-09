@@ -10,7 +10,7 @@ import com.alvingao.wordcounter.exceptions.TokenizationException;
 import com.alvingao.wordcounter.sentencestructure.Punctuation;
 import com.alvingao.wordcounter.sentencestructure.SentenceElement;
 import com.alvingao.wordcounter.sentencestructure.Word;
-import com.alvingao.wordcounter.tokenizer.Tokenizer;
+import com.alvingao.wordcounter.analyzers.Tokenizer;
 
 public class TokenizerTest {
     @Test

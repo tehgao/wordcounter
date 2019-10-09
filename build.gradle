@@ -29,5 +29,5 @@ dependencies {
 
 application {
     // Define the main class for the application
-    mainClassName = 'com.alvingao.wordcounter.App'
+    mainClassName = 'com.alvingao.wordcounter.WordCounter'
 }
