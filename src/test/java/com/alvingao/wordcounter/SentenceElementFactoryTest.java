@@ -34,6 +34,12 @@ public class SentenceElementFactoryTest {
         assertEquals(new Word("hi"), output);
     }
 
+    @Test
+    public void testCreateWordHyphenated() throws IllegalTokenException {
+        SentenceElement output = SentenceElementFactory.getSentenceElement("test-run");
+        assertEquals(new Word("test-run"), output);
+    }
+
     @Test(expected = IllegalTokenException.class)
     public void testCreateWordIncludesPunctuation() throws IllegalTokenException {
         SentenceElementFactory.getSentenceElement("hi.");

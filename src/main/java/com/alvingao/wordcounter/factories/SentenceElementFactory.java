@@ -13,7 +13,7 @@ public class SentenceElementFactory {
         
         SentenceElement output;
 
-        if (token.length() == 1 && token.matches("[:;\",.!]")) {
+        if (token.length() == 1 && token.matches("[:;\",.!?]")) {
             output = new Punctuation(token);
         } else if(!token.matches(".*[:;\",.!]+.*")) {
             output = new Word(token);
