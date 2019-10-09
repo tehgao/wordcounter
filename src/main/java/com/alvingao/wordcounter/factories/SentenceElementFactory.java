@@ -8,9 +8,7 @@ public class SentenceElementFactory {
     public static SentenceElement getSentenceElement(String token) {
         SentenceElement output;
 
-        // we assume the tokenizer has done its job correctly -- all non-word
-        // punctuation marks are of length 1.
-        if (token.length() == 1) {
+        if (token.length() == 1 && token.matches("[:;\",.!]")) {
             output = new Punctuation(token);
         } else {
             output = new Word(token);
