@@ -13,29 +13,25 @@ public class SentenceElementFactoryTest {
     @Test
     public void testCreatePunctuation() throws IllegalTokenException {
         SentenceElement output = SentenceElementFactory.getSentenceElement(".");
-
-        assertTrue(output instanceof Punctuation);
+        assertEquals(new Punctuation("."), output);
     }
 
     @Test
     public void testCreatePunctuationSingletonStringNotPunctuation() throws IllegalTokenException {
         SentenceElement output = SentenceElementFactory.getSentenceElement("a");
-
         assertFalse(output instanceof Punctuation);
     }
 
     @Test
     public void testCreatePunctuationWordNotPunctuation() throws IllegalTokenException {
         SentenceElement output = SentenceElementFactory.getSentenceElement("hello");
-
         assertFalse(output instanceof Punctuation);
     }
 
     @Test
     public void testCreateWord() throws IllegalTokenException {
         SentenceElement output = SentenceElementFactory.getSentenceElement("hi");
-
-        assertTrue(output instanceof Word);
+        assertEquals(new Word("hi"), output);
     }
 
     @Test(expected = IllegalTokenException.class)
