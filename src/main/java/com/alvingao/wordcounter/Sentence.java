@@ -34,12 +34,20 @@ public class Sentence implements Iterable<SentenceElement> {
 
     @Override
     public String toString() {
+        // TODO: fix this method
         String output = "";
 
+        // flip flopping flag to ensure double quotes are spaced properly
+        boolean quotation = false;
         for(SentenceElement elt : this.sentenceElements) {
             if(output.length() > 0 && !(elt instanceof Punctuation)) {
                 output += " ";
-            }
+            } else if(elt.equals(new Punctuation("\""))) {
+                if(!quotation) {
+                    output += " ";
+                }
+                quotation = !quotation;
+            } 
 
             output += elt.toString();
         }
