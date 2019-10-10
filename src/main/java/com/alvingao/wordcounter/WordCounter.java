@@ -3,8 +3,24 @@
  */
 package com.alvingao.wordcounter;
 
+import java.io.IOException;
+import java.nio.file.FileSystems;
+import java.nio.file.Files;
+import java.util.List;
+
+import com.alvingao.wordcounter.analyzers.FrequencyAnalyzer;
+import com.alvingao.wordcounter.analyzers.Tokenizer;
+import com.alvingao.wordcounter.exceptions.TokenizationException;
+
 public class WordCounter {
-    public static void main(String[] args) {
-        System.out.println();
+    public static void main(String[] args) throws TokenizationException, IOException {
+        List<Sentence> corpus = (new Tokenizer())
+                .corpusToSentences(Files.readString(FileSystems.getDefault().getPath("passage.txt")));
+
+        FrequencyAnalyzer freq = new FrequencyAnalyzer(corpus);
+
+        System.out.println("Word count: " + freq.getWordCount());
+        System.out.println("Most used words: " + freq.getTopWords(10));
+        System.out.println("Last sentence with the most frequently used word: ");
     }
 }

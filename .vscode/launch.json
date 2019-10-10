@@ -1,0 +1,11 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - WordCounter",
+            "request": "launch",
+            "mainClass": "com.alvingao.wordcounter.WordCounter",
+            "projectName": "wordcounter"
+        }
+    ]
+}
