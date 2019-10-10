@@ -5,8 +5,21 @@ import java.util.Objects;
 public abstract class AbstractSentenceElement implements SentenceElement {
     protected String value;
 
+    public AbstractSentenceElement(String value) {
+        this.value = value;
+    }
+
+    public AbstractSentenceElement(AbstractSentenceElement element) {
+        this.value = element.getValue();
+    }
+
     public String getValue() {
         return this.value;
+    }
+
+    // final -- all child classes should be immutable
+    private final void setValue(String value) {
+        this.value = value;
     }
 
     @Override
