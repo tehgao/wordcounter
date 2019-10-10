@@ -22,8 +22,8 @@ public class Sentence {
         this.sentenceElements = Arrays.asList(elements);
     }
 
-    public List<SentenceElement> getSentenceElements() {
-        return new ArrayList<SentenceElement>(this.sentenceElements);
+    public SentenceElement getElement(int index) {
+        
     }
 
     @Override
