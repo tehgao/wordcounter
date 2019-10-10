@@ -5,6 +5,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 
+import com.alvingao.wordcounter.sentencestructure.Punctuation;
 import com.alvingao.wordcounter.sentencestructure.SentenceElement;
 
 public class Sentence {
@@ -23,7 +24,22 @@ public class Sentence {
     }
 
     public SentenceElement getElement(int index) {
-        
+        return this.sentenceElements.get(index);
+    }
+
+    @Override
+    public String toString() {
+        String output = "";
+
+        for(SentenceElement elt : this.sentenceElements) {
+            if(output.length() > 0 && !(elt instanceof Punctuation)) {
+                output += " ";
+            }
+
+            output += elt.toString();
+        }
+
+        return output;
     }
 
     @Override

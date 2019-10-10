@@ -23,6 +23,11 @@ public abstract class AbstractSentenceElement implements SentenceElement {
     }
 
     @Override
+    public String toString() {
+        return this.value;
+    }
+
+    @Override
     public int hashCode() {
         return Objects.hash(this.value);
     }
