@@ -2,17 +2,22 @@ package com.alvingao.wordcounter;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Objects;
 
 import com.alvingao.wordcounter.sentencestructure.Punctuation;
 import com.alvingao.wordcounter.sentencestructure.SentenceElement;
 
-public class Sentence {
+public class Sentence implements Iterable<SentenceElement> {
     private List<SentenceElement> sentenceElements;
 
     public Sentence() {
         this.sentenceElements = new ArrayList<>();
+    }
+
+    public Sentence(Sentence sentence) {
+        this.sentenceElements = new ArrayList<>(sentence.sentenceElements);
     }
 
     public Sentence(List<SentenceElement> sentenceElements) {
@@ -58,8 +63,13 @@ public class Sentence {
         if (getClass() != obj.getClass()) {
             return false;
         }
-        
+
         Sentence other = (Sentence) obj;
         return Objects.equals(this.sentenceElements, other.sentenceElements);
+    }
+
+    @Override
+    public Iterator<SentenceElement> iterator() {
+        return this.sentenceElements.iterator();
     }
 }
