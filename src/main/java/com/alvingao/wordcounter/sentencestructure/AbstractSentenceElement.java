@@ -17,11 +17,6 @@ public abstract class AbstractSentenceElement implements SentenceElement {
         return this.value;
     }
 
-    // final -- all child classes should be immutable
-    private final void setValue(String value) {
-        this.value = value;
-    }
-
     @Override
     public String toString() {
         return this.value;
