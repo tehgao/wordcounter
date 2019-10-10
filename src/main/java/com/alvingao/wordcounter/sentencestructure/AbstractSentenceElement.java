@@ -3,7 +3,7 @@ package com.alvingao.wordcounter.sentencestructure;
 import java.util.Objects;
 
 public abstract class AbstractSentenceElement implements SentenceElement {
-    protected String value;
+    private final String value;
 
     public AbstractSentenceElement(String value) {
         this.value = value;
