@@ -21,6 +21,9 @@ public class WordCounter {
 
         System.out.println("Word count: " + freq.getWordCount());
         System.out.println("Most used words: " + freq.getTopWords(10));
-        System.out.println("Last sentence with the most frequently used word: ");
+
+        List<Sentence> sentences = freq.getSentencesWithWord(freq.getTopWords(10).get(0));
+        Sentence last = sentences.get(sentences.size() - 1);
+        System.out.println("Last sentence with the most frequently used word: " + last);
     }
 }
