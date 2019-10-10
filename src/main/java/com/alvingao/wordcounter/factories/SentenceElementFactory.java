@@ -23,14 +23,4 @@ public class SentenceElementFactory {
 
         return output;
     }
-
-    public static SentenceElement getSentenceElement(SentenceElement element) {
-        if(element instanceof Word) {
-            return new Word((Word) element);
-        } else if(element instanceof Punctuation) {
-            return new Punctuation((Punctuation) element);
-        } else {
-            throw new IllegalArgumentException("Unsupported SentenceElement");
-        }
-    }
 }
