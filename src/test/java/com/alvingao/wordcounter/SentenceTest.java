@@ -31,4 +31,12 @@ public class SentenceTest {
 
         assertEquals("Hello \"World\"! Hello \"World\"!", classUnderTest.toString());
     }
+
+    @Test
+    public void testToStringSentenceStartsWithQuotationMarks() {
+        Sentence classUnderTest = new Sentence(new Punctuation("\""), new Word("Hello"), new Word("World"),
+                new Punctuation("\""), new Punctuation("!"));
+
+        assertEquals("\"Hello World\"!", classUnderTest.toString());
+    }
 }

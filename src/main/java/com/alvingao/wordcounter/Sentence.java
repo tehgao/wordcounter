@@ -69,7 +69,7 @@ public class Sentence implements Iterable<SentenceElement> {
         StringBuilder sb = new StringBuilder();
 
         // flag for tracking quotation marks
-        boolean quotation = false;
+        boolean quotation = this.getElement(0).equals(new Punctuation("\""));
 
         // iterate through the sentence elements pairwise
         sb.append(this.getElement(0));
