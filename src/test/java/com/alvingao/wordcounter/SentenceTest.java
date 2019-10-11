@@ -26,10 +26,10 @@ public class SentenceTest {
     @Test
     public void testToStringQuotationMarksMultiple() {
         Sentence classUnderTest = new Sentence(new Word("Hello"), new Punctuation("\""), new Word("World"),
-                new Punctuation("\""), new Punctuation("!"), new Word("Hello"), new Punctuation("\""),
+                new Punctuation("\""), new Word("Hello"), new Punctuation("\""),
                 new Word("World"), new Punctuation("\""), new Punctuation("!"));
 
-        assertEquals("Hello \"World\"! Hello \"World\"!", classUnderTest.toString());
+        assertEquals("Hello \"World\" Hello \"World\"!", classUnderTest.toString());
     }
 
     @Test
