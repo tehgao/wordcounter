@@ -13,19 +13,39 @@ import com.alvingao.wordcounter.exceptions.TokenizationException;
 import com.alvingao.wordcounter.sentencestructure.SentenceElement;
 import com.alvingao.wordcounter.sentencestructure.Word;
 
+/**
+ * Class for performing frequency analysis on text samples.
+ */
 public class FrequencyAnalyzer {
     private List<Sentence> corpus;
 
+    /**
+     * Creates an instance of {@code FrequencyAnalyzer} backed by {@code corpus}.
+     * 
+     * @param corpus A {@code List<Sentence>} representing the text.
+     */
     public FrequencyAnalyzer(List<Sentence> corpus) {
         this.setCorpus(corpus);
     }
 
+    /**
+     * Tokenizes the string and creates an instance of {@code FrequencyAnalyzer} backed by
+     * {@code corpus}.
+     * 
+     * @param corpus The text as a string.
+     */
     public FrequencyAnalyzer(String corpus) throws TokenizationException {
         Tokenizer t = new Tokenizer();
 
         this.setCorpus(t.corpusToSentences(corpus));
     }
 
+    /**
+     * Returns a {@code Map<String, Integer>} mapping unique words in
+     * {@code this.corpus} to the number of times that word appears.
+     * 
+     * @return a {@code Map<String, Integer>} frequency table.
+     */
     public Map<String, Integer> getFrequencyTable() {
         Map<String, Integer> freq = new HashMap<>();
 
@@ -46,6 +66,11 @@ public class FrequencyAnalyzer {
         return freq;
     }
 
+    /**
+     * Gets the number of {@code Word}s in {@code this.corpus}.
+     * 
+     * @return the number of {@code Word}s in {@code this.corpus}.
+     */
     public int getWordCount() {
         int count = 0;
         for (Map.Entry<String, Integer> entry : this.getFrequencyTable().entrySet()) {
@@ -104,10 +129,20 @@ public class FrequencyAnalyzer {
         return output;
     }
 
+    /**
+     * Returns a copy of {@code this.corpus}.
+     * 
+     * @return a copy of {@code this.corpus}.
+     */
     public List<Sentence> getCorpus() {
         return new ArrayList<Sentence>(this.corpus);
     }
 
+    /**
+     * Sets {@code this.corpus} as a copy of the param.
+     * 
+     * @param corpus The new corpus.
+     */
     public void setCorpus(List<Sentence> corpus) {
         this.corpus = new ArrayList<>(corpus);
     }

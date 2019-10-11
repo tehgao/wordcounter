@@ -1,5 +1,8 @@
 package com.alvingao.wordcounter.exceptions;
 
+/**
+ * Signals that a general error has occured during tokenization.
+ */
 public class TokenizationException extends WordCounterException {
 
     /**
@@ -7,6 +10,11 @@ public class TokenizationException extends WordCounterException {
      */
     private static final long serialVersionUID = 3L;
 
+    /**
+     * Constructs a {@code TokenizationException} with a given message.
+     * 
+     * @param message The message.
+     */
     public TokenizationException(String message) {
         super(message);
     }
