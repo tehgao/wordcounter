@@ -97,4 +97,13 @@ public class TokenizerTest {
 
         assertEquals(expected, actual);
     }
+
+    @Test(expected = TokenizationException.class)
+    public void testCorpusToSentencesQuotationMalformed() throws TokenizationException {
+        Tokenizer classUnderTest = new Tokenizer();
+
+        classUnderTest.corpusToSentences("\"Hello world. I am here.");
+
+        fail();
+    }
 }
