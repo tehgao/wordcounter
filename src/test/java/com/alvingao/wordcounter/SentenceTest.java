@@ -17,8 +17,18 @@ public class SentenceTest {
 
     @Test
     public void testToStringQuotationMarks() {
-        Sentence classUnderTest = new Sentence(new Word("Hello"), new Punctuation("\""), new Word("World"), new Punctuation("\""), new Punctuation("!"));
+        Sentence classUnderTest = new Sentence(new Word("Hello"), new Punctuation("\""), new Word("World"),
+                new Punctuation("\""), new Punctuation("!"));
 
         assertEquals("Hello \"World\"!", classUnderTest.toString());
+    }
+
+    @Test
+    public void testToStringQuotationMarksMultiple() {
+        Sentence classUnderTest = new Sentence(new Word("Hello"), new Punctuation("\""), new Word("World"),
+                new Punctuation("\""), new Punctuation("!"), new Word("Hello"), new Punctuation("\""),
+                new Word("World"), new Punctuation("\""), new Punctuation("!"));
+
+        assertEquals("Hello \"World\"! Hello \"World\"!", classUnderTest.toString());
     }
 }
