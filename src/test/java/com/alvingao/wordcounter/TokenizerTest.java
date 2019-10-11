@@ -70,4 +70,31 @@ public class TokenizerTest {
 
         assertEquals(expected, actual);
     }
+
+    @Test
+    public void testCorpusToSentencesQuotationEndingPunctuation() throws TokenizationException {
+        Tokenizer classUnderTest = new Tokenizer();
+
+        List<Sentence> actual = classUnderTest.corpusToSentences("\"Hello world.\" I am here.");
+        List<Sentence> expected = new ArrayList<>();
+
+        expected.add(new Sentence(new Punctuation("\""), new Word("Hello"), new Word("world"), new Punctuation("."), new Punctuation("\"")));
+        expected.add(new Sentence(new Word("I"), new Word("am"), new Word("here"), new Punctuation(".")));
+
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void testCorpusToSentencesQuotationEndingPunctuationMultipleSentences() throws TokenizationException {
+        Tokenizer classUnderTest = new Tokenizer();
+
+        List<Sentence> actual = classUnderTest.corpusToSentences("\"Hello world. I am here.\" I am still here.");
+        List<Sentence> expected = new ArrayList<>();
+
+        expected.add(new Sentence(new Punctuation("\""), new Word("Hello"), new Word("world"), new Punctuation(".")));
+        expected.add(new Sentence(new Word("I"), new Word("am"), new Word("here"), new Punctuation("."), new Punctuation("\"")));
+        expected.add(new Sentence(new Word("I"), new Word("am"), new Word("still"), new Word("here"), new Punctuation(".")));
+
+        assertEquals(expected, actual);
+    }
 }

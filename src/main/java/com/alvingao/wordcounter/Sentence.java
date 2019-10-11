@@ -69,7 +69,7 @@ public class Sentence implements Iterable<SentenceElement> {
         StringBuilder sb = new StringBuilder();
 
         // flag for tracking quotation marks
-        boolean quotation = this.getElement(0).equals(new Punctuation("\""));
+        boolean isInQuotes = this.getElement(0).equals(new Punctuation("\""));
 
         // iterate through the sentence elements pairwise
         sb.append(this.getElement(0));
@@ -86,7 +86,7 @@ public class Sentence implements Iterable<SentenceElement> {
 
                 // if one of them is a quotation mark, then things get tricky.
                 if (second.equals(new Punctuation("\""))) {
-                    if (!quotation) {
+                    if (!isInQuotes) {
                         // case: second is an opening quotation mark
                         sb.append(" ");
                         sb.append(second.getValue());
@@ -95,11 +95,11 @@ public class Sentence implements Iterable<SentenceElement> {
                         sb.append(second.getValue());
                     }
 
-                    quotation = !quotation;
+                    isInQuotes = !isInQuotes;
                 } else {
                     // if the second element is not punctuation or following an open quotation mark,
                     // we need a space.
-                    if (!(second instanceof Punctuation) && !(first.equals(new Punctuation("\"")) && quotation)) {
+                    if (!(second instanceof Punctuation) && !(first.equals(new Punctuation("\"")) && isInQuotes)) {
                         sb.append(" ");
                         sb.append(second.getValue());
                     } else {
