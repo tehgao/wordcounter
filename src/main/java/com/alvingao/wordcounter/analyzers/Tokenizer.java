@@ -51,9 +51,10 @@ public class Tokenizer {
 
     /**
      * Converts a {@code List<SentenceElements>} to a {@code List<Sentence>}.
+     * 
      * @param corpus the {@code List<SentenceElements>}
      * @return the generated {@code List<Sentence>}
-     * @throws TokenizationException
+     * @throws TokenizationException when an invalid token is detected.
      */
     public List<Sentence> corpusToSentences(String corpus) throws TokenizationException {
         List<Sentence> output = new ArrayList<>();

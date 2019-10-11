@@ -8,6 +8,7 @@ import java.util.Objects;
 
 import com.alvingao.wordcounter.sentencestructure.Punctuation;
 import com.alvingao.wordcounter.sentencestructure.SentenceElement;
+import com.alvingao.wordcounter.sentencestructure.Word;
 
 /**
  * Represents a sentence, usually a sequence of {@code Word}s terminated by a
@@ -65,25 +66,50 @@ public class Sentence implements Iterable<SentenceElement> {
 
     @Override
     public String toString() {
-        // TODO: fix this method
-        String output = "";
+        StringBuilder sb = new StringBuilder();
 
-        // flip flopping flag to ensure double quotes are spaced properly
+        // flag for tracking quotation marks
         boolean quotation = false;
-        for (SentenceElement elt : this.sentenceElements) {
-            if (output.length() > 0 && !(elt instanceof Punctuation)) {
-                output += " ";
-            } else if (elt.equals(new Punctuation("\""))) {
-                if (!quotation) {
-                    output += " ";
+
+        // iterate through the sentence elements pairwise
+        sb.append(this.getElement(0));
+        for (int index = 0; index < this.sentenceElements.size() - 1; index++) {
+            SentenceElement first = this.getElement(index);
+            SentenceElement second = this.getElement(index + 1);
+
+            // if both elements are Words, then we need a space between them.
+            if (first instanceof Word && second instanceof Word) {
+                sb.append(" ");
+                sb.append(second.getValue());
+            } else {
+                // we are assuming that non-word elements are all punctuation elements
+
+                // if one of them is a quotation mark, then things get tricky.
+                if (second.equals(new Punctuation("\""))) {
+                    if (!quotation) {
+                        // case: second is an opening quotation mark
+                        sb.append(" ");
+                        sb.append(second.getValue());
+                    } else {
+                        // case: second is a closing quotation mark
+                        sb.append(second.getValue());
+                    }
+
+                    quotation = !quotation;
+                } else {
+                    // if the second element is not punctuation or following an open quotation mark,
+                    // we need a space.
+                    if (!(second instanceof Punctuation) && !(first.equals(new Punctuation("\"")) && quotation)) {
+                        sb.append(" ");
+                        sb.append(second.getValue());
+                    } else {
+                        // Otherwise, there's no space.
+                        sb.append(second.getValue());
+                    }
                 }
-                quotation = !quotation;
             }
-
-            output += elt.toString();
         }
-
-        return output;
+        return sb.toString();
     }
 
     @Override
